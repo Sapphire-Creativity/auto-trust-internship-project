@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1d6ecc;
+  --color-secondary: #f5a623; /* optional example */
+  --color-dark: #1a1a1a;
+  --color-light: #f9f9f9;
+
+  --font-main: "Lato", sans-serif;
+
+  /* --radius-base: 8px;
+  --radius-full: 999px; */
+}
+
+/* ----------------------------------------------
+   🔵 Global Base Styles 
+------------------------------------------------ */
+
+@layer base {
+  body {
+    @apply font-main text-dark bg-white;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* ----------------------------------------------
+   🔵 Reusable Utility Classes (Custom Components)
+------------------------------------------------ */
+@layer components {
+  /* Button Primary */
+  .btn-primary {
+    @apply px-5 py-3 rounded-xl bg-primary text-white font-medium 
+           hover:bg-primary/90 active:scale-95 transition-all duration-300;
+  }
+
+  /* Button Outline */
+  .btn-outline {
+    @apply px-5 py-3 rounded-xl border border-primary text-primary 
+           hover:bg-primary hover:text-white transition-all duration-300;
+  }
+
+  /* Input Styles */
+  .input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl
+           focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none
+           transition-all duration-200;
+  }
+
+  /* Flex Center */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  /* Section Spacing */
+  .section {
+    @apply py-16 px-4;
+  }
+}
