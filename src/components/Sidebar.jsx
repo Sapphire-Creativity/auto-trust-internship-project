@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FiGrid,
   FiCheckCircle,
@@ -11,6 +11,8 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
+import { TbLogout2 } from "react-icons/tb";
+import { IoMdCart } from "react-icons/io";
 
 const menu = [
   {
@@ -38,6 +40,12 @@ const menu = [
     path: "/dashboard/repair-estimator",
   },
   {
+    key: "cart",
+    label: "Cart",
+    icon: <IoMdCart />,
+    path: "/dashboard/cart",
+  },
+  {
     key: "history",
     label: "Service History",
     icon: <FiClock />,
@@ -56,7 +64,8 @@ const popular = [
 
 export default function Sidebar() {
   const [open, setOpen] = useState(true);
-  const location = useLocation(); // Detect active route
+  const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <aside
@@ -70,10 +79,8 @@ export default function Sidebar() {
           onClick={() => setOpen(!open)}
           className="p-3 my-2 rounded-md hover:bg-gray-100"
         >
-          {open ? <FiChevronLeft size={20}  /> : <FiChevronRight size={20} />}
+          {open ? <FiChevronLeft size={20} /> : <FiChevronRight size={20} />}
         </button>
-
-         
       </div>
 
       {/* Navigation Menu */}
@@ -107,7 +114,7 @@ export default function Sidebar() {
       </nav>
 
       {/* Popular Section */}
-      <div className="px-4 py-4">
+      {/* <div className="px-4 py-4">
         {open && (
           <h4 className="text-gray-600 font-semibold mb-2 text-sm uppercase tracking-wide">
             Popular Services
@@ -125,7 +132,7 @@ export default function Sidebar() {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
 
       {/* Footer */}
       <div className="mt-auto px-4 py-5 border-t border-gray-100">
@@ -139,12 +146,13 @@ export default function Sidebar() {
         </button>
 
         <button
+          onClick={() => navigate("/login")}
           className={`w-full flex items-center gap-3 px-3 py-3 mt-2 rounded-md hover:bg-gray-100 transition-all ${
             !open && "justify-center"
           }`}
         >
-          <FiHelpCircle className="text-xl text-gray-600" />
-          {open && <span className="text-gray-700">Help</span>}
+          <TbLogout2 className="text-xl text-red-500" />
+          {open && <span className="text-red-500">Logout</span>}
         </button>
       </div>
     </aside>

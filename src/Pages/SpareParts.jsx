@@ -1,48 +1,70 @@
 import { FaChevronDown } from "react-icons/fa";
 import SparePartsCards from "../components/SparePartsCard";
+import { spareParts } from "../assets/data";
+import SparePartCard from "../components/SparePartCard";
+import { useState } from "react";
 
 const SpareParts = () => {
+  // To filter options from the data
+  const categories = [...new Set(spareParts.map((item) => item.category))];
+  const brands = [...new Set(spareParts.map((item) => item.brand))];
+  const vehicles = [...new Set(spareParts.map((item) => item.vehicle))];
+  const priceRanges = [...new Set(spareParts.map((item) => item.priceRange))];
+
+  //
+  const [filters, setFilters] = useState({
+    category: "",
+    brand: "",
+    priceRange: "",
+    vehicle: "",
+  });
+
+  //
+  const handleFilterChange = (prop, value) => {
+    setFilters((prev) => ({ ...prev, [prop]: value }));
+  };
+  //
+  //
+  const filteredData = spareParts.filter((item) => {
+    const matchCategory = filters.category
+      ? item.category === filters.category
+      : true;
+    const matchBrand = filters.brand ? item.brand === filters.brand : true;
+    const matchVehicle = filters.vehicle
+      ? item.vehicle === filters.vehicle
+      : true;
+    const matchPrice = filters.priceRange
+      ? item.priceRange === filters.priceRange
+      : true;
+
+    return matchCategory && matchBrand && matchVehicle && matchPrice;
+  });
+
   return (
-    <div className="px-6 py-8">
+    <div className="p-4">
       {/* Page Title */}
-      <h1 className="text-[36px] font-bold mb-3">Spare Parts</h1>
-      <h2 className="text-[22px] font-semibold mb-3">Trending Parts</h2>
+       <h1 className="text-2xl font-semibold mt-4 mb-2">Spare Parts</h1>
+      <p className="text-base font-medium">Trending Parts </p>
 
       {/* Trending Parts */}
-      <div className="flex gap-4 overflow-x-auto pb-4">
-        {[1, 2, 3, 4, 5].map((item) => (
-          <div
-            key={item}
-            className="min-w-[150px] rounded-xl shadow p-2 bg-white"
-          >
-            <div className="w-full  relative rounded-lg overflow-hidden">
-              <img
-                src="/assets/brakepads.jpg"
-                alt="Brake Pads"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <p className="text-center mt-2 font-semibold text-[18px]">
-              Brake Pads
-            </p>
-          </div>
-        ))}
-      </div>
+      <div className="flex gap-4 overflow-x-auto pb-4"></div>
+
       <div className="w-full  flex justify-between items-center  overflow-x-auto scrollbar-hide gap-3 my-4 py-4">
         {/* LEFT FILTER BUTTONS */}
         <div className="flex gap-3 min-w-max">
           {/* Category */}
           <div className="relative">
             <select
+              onChange={(e) => handleFilterChange("category", e.target.value)}
               className="appearance-none p-3 rounded-xl text-sm bg-white shadow-lg border-none cursor-pointer w-40
                  hover:bg-dark hover:text-white transition"
             >
-              <option value="">Category</option>
-              <option>Brakes</option>
-              <option>Engine Parts</option>
-              <option>Electricals</option>
-              <option>Suspension</option>
+              <option value="">All Categories</option>
+              {categories.map((cat, idx) => (
+                <option key={idx} value={cat}>
+                  {cat}
+                </option>
+              ))}
             </select>
 
             <FaChevronDown
@@ -54,13 +76,16 @@ const SpareParts = () => {
           {/* Brand */}
           <div className="relative">
             <select
+              onChange={(e) => handleFilterChange("brand", e.target.value)}
               className="appearance-none p-3 rounded-xl text-sm bg-white shadow-lg border-none cursor-pointer w-40
                  hover:bg-dark hover:text-white transition"
             >
-              <option value="">Brand</option>
-              <option>Bosch</option>
-              <option>NGK</option>
-              <option>Denso</option>
+              <option value="">All Brands</option>
+              {brands.map((brand, idx) => (
+                <option key={idx} value={brand}>
+                  {brand}
+                </option>
+              ))}
             </select>
 
             <FaChevronDown
@@ -72,12 +97,16 @@ const SpareParts = () => {
           {/* Price Range */}
           <div className="relative">
             <select
+              onChange={(e) => handleFilterChange("priceRange", e.target.value)}
               className="appearance-none p-3 rounded-xl text-sm bg-white shadow-lg border-none cursor-pointer w-40
                  hover:bg-dark hover:text-white transition"
             >
-              <option value="">Price Range</option>
-              <option>₦0 - ₦10,000</option>
-              <option>₦10,000 - ₦50,000</option>
+              <option value="">All Prices</option>
+              {priceRanges.map((price, idx) => (
+                <option key={idx} value={price}>
+                  {price}
+                </option>
+              ))}
             </select>
 
             <FaChevronDown
@@ -89,14 +118,16 @@ const SpareParts = () => {
           {/* Vehicle */}
           <div className="relative">
             <select
+              onChange={(e) => handleFilterChange("vehicle", e.target.value)}
               className="appearance-none p-3 rounded-xl text-sm bg-white shadow-lg border-none cursor-pointer w-40
                  hover:bg-dark hover:text-white transition"
             >
-              <option value="">Vehicle</option>
-              <option>Toyota</option>
-              <option>Honda</option>
-              <option>Lexus</option>
-              <option>Hyundai</option>
+              <option value="">All Vehicles</option>
+              {vehicles.map((vehicle, idx) => (
+                <option key={idx} value={vehicle}>
+                  {vehicle}
+                </option>
+              ))}
             </select>
 
             <FaChevronDown
@@ -117,19 +148,33 @@ const SpareParts = () => {
       </div>
 
       {/* Result Count + Sort */}
-      <div className="flex items-center justify-between mt-10 mb-4">
+      {/* <div className="flex items-center justify-between mt-10 mb-4">
         <p className="text-gray-500">Showing 1-8 of 64 results</p>
         <select className="border border-gray-500 rounded-lg px-2 py-2 text-gray-500">
           <option>Price: Low to High</option>
           <option>Price: High to Low</option>
         </select>
-      </div>
+      </div> */}
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map(() => (
-          <SparePartsCards />
-        ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg-gap-6">
+        {filteredData.length > 0 ? (
+          filteredData.map((item) => (
+            <SparePartCard
+              key={item.id}
+              name={item.name}
+              category={item.category}
+              brand={item.brand}
+              vehicle={item.vehicle}
+              priceRange={item.priceRange}
+              rating={item.rating}
+              seller={item.seller}
+              image={item.image}
+            />
+          ))
+        ) : (
+          <p className="text-gray-500">No spare parts match your filters.</p>
+        )}
       </div>
 
       {/* Pagination */}

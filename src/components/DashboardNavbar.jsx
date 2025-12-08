@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FiSearch, FiBell, FiUser, FiLogOut, FiSettings } from "react-icons/fi";
+import { IoMdCart } from "react-icons/io";
+import { useNavigate } from "react-router";
 
 export default function DashboardNavbar() {
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -24,7 +27,7 @@ export default function DashboardNavbar() {
       </div>
 
       {/* Center: Search */}
-      <div className="flex-1 max-w-2xl mx-6 hidden md:block">
+      {/* <div className="flex-1 max-w-2xl mx-6 hidden md:block">
         <div className="relative">
           <input
             type="text"
@@ -33,13 +36,22 @@ export default function DashboardNavbar() {
           />
           <FiSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500" />
         </div>
-      </div>
+      </div> */}
 
       {/* Right: Notification + Profile */}
       <div className="flex items-center gap-6 relative">
         {/* Notification Bell */}
         <button className="relative">
           <FiBell className="text-[22px] text-gray-700 hover:text-primary transition" />
+          <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
+        </button>
+
+        {/* Cart */}
+        <button
+          onClick={() => navigate("/dashboard/cart")}
+          className="relative"
+        >
+          <IoMdCart className="text-[22px] text-gray-700 hover:text-primary transition" />
           <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
         </button>
 
