@@ -798,3 +798,171 @@ export const repairCosts = [
     image: "/images/full-service.jpg",
   },
 ];
+
+
+
+// src/data/dummy.js
+// Put referenced images in /public/
+// e.g. /public/images/profile.svg, /public/icons/wrench.svg, /public/icons/star.svg, etc.
+
+export const mechanicProfile = {
+    id: "af-001",
+    shop: "AutoFix",
+    shopIcon: "/icons/wrench.svg",
+    profileImg: "/images/profile-img.jpg",
+    badgeHeart: "/icons/heart.svg", // small heart icon on profile image
+    name: "Chidi Okafor",
+    verified: true,
+    address: "AutoFix Lekki, Plot 45, Admiralty Way, Lekki Phase 1, Lagos",
+    distance: "2.3 km away",
+    rating: 5.0,
+    reviewsCount: 187,
+    priceNote: "₦NNN",
+    about:
+        "Chidi is a master technician with over 12 years of experience specializing in Japanese vehicles. He holds multiple certifications from Toyota and Honda and has worked on thousands of vehicles. Known for his meticulous attention to detail and honest assessments, Chidi takes pride in providing reliable repairs that last. He stays updated with the latest automotive technology and diagnostic tools.",
+    meta: {
+        title: "Master Technician",
+        workshop: "AutoFix Lekki",
+        education: "Diploma in Automotive Engineering, Yaba College of Technology",
+        languages: ["English", "Igbo", "Yoruba"],
+    },
+
+    contact: {
+        phone: "+234 803 456 7890",
+        email: "chidi.okafor@autofixlekki.com",
+        distance: "2.3 km away",
+    },
+
+    workingHours: [
+        { day: "Monday - Friday", hours: "8:00 AM - 6:00 PM" },
+        { day: "Saturday", hours: "8:00 AM - 6:00 PM" },
+        { day: "Sunday", hours: "Closed" },
+    ],
+
+    stats: [
+        { icon: "/icons/exp.svg", value: "12", label: "Years Exp", bg: "bg-[#eef7ff]" },
+        { icon: "/icons/certified.svg", value: "4", label: "Certified", bg: "bg-[#f0fff4]" },
+        { icon: "/icons/jobs.svg", value: "2840", label: "Jobs Done", bg: "bg-[#fbf5ff]" },
+        { icon: "/icons/star.svg", value: "5.0", label: "Rating", bg: "bg-[#fff7f0]" },
+    ],
+
+    serviceCategories: [
+        "All Services",
+        "Maintenance",
+        "Brakes",
+        "Engine",
+        "Transmission",
+        "Tires",
+        "AC/Heating",
+        "Electrical",
+        "Suspension",
+        "Cooling",
+        "Exhaust",
+    ],
+
+    services: [
+        {
+            id: "s1",
+            title: "Engine Diagnostics",
+            tag: "Diagnostics",
+            desc:
+                "Complete computer diagnostics with advanced scanners, fault code reading, and troubleshooting.",
+            priceRange: "₦5,000 - ₦12,000",
+            duration: "30-60 mins",
+            estDays: null,
+        },
+        {
+            id: "s2",
+            title: "Engine Repair",
+            tag: "Engine",
+            desc:
+                "Comprehensive engine repairs including valve adjustments, gasket replacements, and minor overhauls.",
+            priceRange: "₦25,000 - ₦300,000",
+            duration: null,
+            estDays: "2-5 days",
+        },
+        {
+            id: "s3",
+            title: "Oil Change",
+            tag: "Maintenance",
+            desc:
+                "Full synthetic or conventional oil change with filter replacement and multi-point inspection.",
+            priceRange: "₦8,000 - ₦15,000",
+            duration: "30-45 mins",
+            estDays: null,
+        },
+        {
+            id: "s4",
+            title: "Transmission Service",
+            tag: "Transmission",
+            desc:
+                "Transmission fluid change, filter replacement, basic diagnostics, and general maintenance.",
+            priceRange: "₦25,000 - ₦300,000",
+            duration: null,
+            estDays: "2-4 days",
+        },
+        {
+            id: "s5",
+            title: "Timing Belt Replacement",
+            tag: "Engine",
+            desc:
+                "Timing belt and water pump replacement with proper alignment to ensure smooth engine performance.",
+            priceRange: "₦45,000 - ₦85,000",
+            duration: "3-5 hours",
+            estDays: null,
+        },
+        {
+            id: "s6",
+            title: "Brake Service",
+            tag: "Brakes",
+            desc:
+                "Brake pad replacement, rotor resurfacing, and brake fluid flush to restore reliable braking performance.",
+            priceRange: "₦20,000 - ₦45,000",
+            duration: "2-3 hours",
+            estDays: null,
+        },
+    ],
+
+    reviews: [
+        {
+            id: "r1",
+            name: "Ngozi Obi",
+            avatar: "/images/rev1.svg",
+            time: "1 week ago",
+            text:
+                "Chidi is simply the best! He diagnosed my Camry engine problem accurately and fixed it perfectly. Very honest and doesn't overcharge. Highly recommended!",
+            rating: 5,
+            serviceTag: "Engine Diagnostics",
+        },
+        {
+            id: "r2",
+            name: "David Okoro",
+            avatar: "/images/rev2.svg",
+            time: "2 weeks ago",
+            text:
+                "Excellent transmission work. My Honda shifts smoothly now. Chidi explained everything clearly and completed the work on time.",
+            rating: 5,
+            serviceTag: "Transmission Service",
+        },
+        {
+            id: "r3",
+            name: "Feyi Johnson",
+            avatar: "/images/rev4.svg",
+            time: "3 weeks ago",
+            text:
+                "Professional and knowledgeable. Changed my timing belt and the car runs like new. Fair pricing too!",
+            rating: 5,
+            serviceTag: "Timing Belt Replacement",
+        },
+        {
+            id: "r4",
+            name: "Michael Adeyemi",
+            avatar: "/images/rev3.svg",
+            time: "1 month ago",
+            text:
+                "Good oil change service. Quick and thorough. Will come back for future maintenance.",
+            rating: 4,
+            serviceTag: "Oil Change",
+        },
+    ],
+};

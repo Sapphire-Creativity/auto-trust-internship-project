@@ -11,6 +11,7 @@ import SpareParts from "./Pages/SpareParts";
 import RepairEstimator from "./Pages/RepairEstimator";
 import ServiceHistory from "./Pages/ServiceHistory";
 import Cart from "./Pages/Cart";
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="repair-estimator" element={<RepairEstimator />} />
           <Route path="service-history" element={<ServiceHistory />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
