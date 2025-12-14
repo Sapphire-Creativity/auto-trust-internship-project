@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import {mechanicProfile} from "../assets/data.js";
 import BookingModal from "../components/BookingModal";
+import Header from "../common/Header.jsx";
 
 const StatCard = ({item}) => (
     <div className={`${item.bg} p-2 rounded-xl text-center shadow-sm`}>
@@ -114,12 +115,7 @@ const Profile = () => {
         <div className="min-h-screen bg-[#f5f6f8] pb-20">
 
             {/* --- BREADCRUMB --- */}
-            <div className="px-6 pt-6 text-sm flex gap-2 items-center text-gray-500">
-                <span>Verified Mechanics</span>
-                <span>/</span>
-                <span className="text-blue-600 font-medium">{p.name}</span>
-            </div>
-
+            <Header route="Verified Mechanics" subRoute={p.name}/>
 
             {/* ------ PROFILE HEADER ------ */}
             <div className="mx-6 mt-4 bg-white rounded-2xl shadow p-4">
